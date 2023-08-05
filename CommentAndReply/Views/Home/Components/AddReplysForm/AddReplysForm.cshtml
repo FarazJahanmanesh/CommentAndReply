@@ -1,0 +1,23 @@
+﻿@model ReplyComment
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div>
+    <form asp-action="AddReply" asp-controller="Home" asp-route-CId="@Model.CommentId">
+        <div>
+            <label asp-for="Name">نام خود را وارد کنید</label>
+            <input asp-for="Name" />
+        </div>
+        <div>
+            <label asp-for="PhoneNumber">شماره خود را وارد کنید</label>
+            <input asp-for="PhoneNumber" />
+        </div>
+        <div>
+            <label asp-for="CommentText">متن کامنت خود را وارد کنید</label>
+            <input asp-for="CommentText" />
+        </div>
+        <button type="submit">ارسال کامنت</button>
+    </form>
+</div>
