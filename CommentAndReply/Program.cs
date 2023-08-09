@@ -11,10 +11,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ICommentAndReplayServices,CommentAndReplayServices>();
 builder.Services.AddScoped<ICommentAndReplyRepository, CommentAndReplyRepository>();
+
+var connectionString = builder.Configuration.GetConnectionString("CommentAndReply");
 builder.Services.AddDbContext<CommentAndReplyDbcontext>(
     options =>
     {
-        options.UseSqlServer("Server=.;Database=CommentAndReply;Trusted_Connection=True;");
+        options.UseSqlServer("Server=.;Database=CommentAndReply;Trusted_Connection=True;TrustServerCertificate=True;");
     });
 
 var app = builder.Build();
