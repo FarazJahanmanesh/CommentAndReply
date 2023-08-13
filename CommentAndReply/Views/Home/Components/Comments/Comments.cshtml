@@ -1,52 +1,36 @@
 ﻿@using CommentAndReply.Dto
 @model List<CommentDetailDto>
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
+    ViewData["Title"] = "Comments Page";
 }
 <head>
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
+    <link rel="stylesheet" href="~/css/Comments.css"/>
 </head>
 
-<form>
-    <div>
-        <table>
-            <tr>
-                <th></th>
-                <th>نام کاربر</th>
-                <th>شماره کاربر</th>
-                <th>کامنت کاربر</th>
-                <th>تاریخ کامنت</th>
-                <th>تعداد ریپلای</th>
-            </tr>
-            @foreach(var item in Model)
-            {
+<article>
+    <form>
+        <div>
+            <table>
                 <tr>
-                    <th><a asp-action="CommentReply" asp-route-Id="@item.Id" asp-controller="Home">.....</a></th>
-                    <th>@item.Name</th>
-                    <th>@item.PhoneNumber</th>
-                    <th>@item.CommentText</th>
-                    <th>@item.CommentDate</th>
-                    <th>@item.CountReply</th>
+                    <th></th>
+                    <th>نام کاربر</th>
+                    <th>شماره کاربر</th>
+                    <th>کامنت کاربر</th>
+                    <th>تاریخ کامنت</th>
+                    <th>تعداد ریپلای</th>
                 </tr>
-            }
-        </table>
-    </div>
-</form>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th><a asp-action="CommentReply" asp-route-Id="@item.Id" asp-controller="Home">.....</a></th>
+                        <th>@item.Name</th>
+                        <th>@item.PhoneNumber</th>
+                        <th>@item.CommentText</th>
+                        <th>@item.CommentDate</th>
+                        <th>@item.CountReply</th>
+                    </tr>
+                }
+            </table>
+        </div>
+    </form>
+</article>
