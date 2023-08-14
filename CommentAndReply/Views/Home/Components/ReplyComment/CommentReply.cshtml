@@ -3,19 +3,24 @@
 *@
 @{
 }
-<div>
-    <form asp-action="CommentReply" asp-controller="Home">
-        <div>
-            <label>نام خود را وارد کنید</label>
-            <input />
-        </div>
-        <div>
-            <label>شماره خود را وارد کنید</label>
-            <input />
-        </div>
-        <div>
-            <label>متن خود را وارد کنید</label>
-            <input />
-        </div>
-    </form>
-</div>
+<head>
+    <link rel="stylesheet" type="text" href="~/css/Home/Components/CommentReply.css"/>
+</head>
+<article>
+    <div>
+        <form asp-action="CommentReply" asp-controller="Home">
+            <div>
+                <label>نام خود را وارد کنید</label>
+                <input />
+            </div>
+            <div>
+                <label>شماره خود را وارد کنید</label>
+                <input />
+            </div>
+            <div>
+                <label>متن خود را وارد کنید</label>
+                <input />
+            </div>
+        </form>
+    </div>
+</article>

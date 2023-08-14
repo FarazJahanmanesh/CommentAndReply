@@ -3,26 +3,31 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<div>
-    <form asp-action="Index" asp-controller="Home">
-        <div>
-            <label asp-for="Name">نام خود را وارد کنید</label>
-            <input asp-for="Name" />
-            <span asp-validation-for="Name"></span>
-        </div>
-        <div>
-            <label asp-for="PhoneNumber">شماره خود را وارد کنید</label>
-            <input asp-for="PhoneNumber" />
-            <span asp-validation-for="PhoneNumber"></span>
-        </div>
-        <div>
-            <label asp-for="CommentText">متن کامنت خود را وارد کنید</label>
-            <input asp-for="CommentText" />
-            <span asp-validation-for="CommentText"></span>
-        </div>
-        <button type="submit">ارسال</button>
-    </form>
-</div>
-<div>
-    @await Component.InvokeAsync(name:"Comments")
-</div>
+<head>
+    <link type="text" rel="stylesheet" href="~/css/Home/Index.css"/>
+</head>
+<article>
+    <div>
+        <form asp-action="Index" asp-controller="Home">
+            <div>
+                <label asp-for="Name">نام خود را وارد کنید</label>
+                <input asp-for="Name" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div>
+                <label asp-for="PhoneNumber">شماره خود را وارد کنید</label>
+                <input asp-for="PhoneNumber" />
+                <span asp-validation-for="PhoneNumber"></span>
+            </div>
+            <div>
+                <label asp-for="CommentText">متن کامنت خود را وارد کنید</label>
+                <input asp-for="CommentText" />
+                <span asp-validation-for="CommentText"></span>
+            </div>
+            <button type="submit">ارسال</button>
+        </form>
+    </div>
+    <div>
+        @await Component.InvokeAsync(name:"Comments")
+    </div>
+</article>

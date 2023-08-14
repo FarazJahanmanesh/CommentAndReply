@@ -5,40 +5,26 @@
 @{
 }
 <head>
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
+    <link type="text" rel="stylesheet" href="~/css/Home/CommentReply.css"/>
 </head>
-<div>
-    <table>
-        <tr>
-            <th>نام کاربر</th>
-            <th>شماره کاربر</th>
-            <th>کامنت کاربر</th>
-            <th>تاریخ کامنت</th>
-        </tr>
-        <tr>
-            <th>@Model.Name</th>
-            <th>@Model.PhoneNumber</th>
-            <th>@Model.CommentText</th>
-            <th>@Model.CommentDate</th>
-        </tr>
-        }
-    </table>
-</div>
-@await Component.InvokeAsync("Replys",Model.Id)
-@await Component.InvokeAsync("AddReplysForm",Model.Id)
+<article>
+    <div>
+        <table>
+            <tr>
+                <th>نام کاربر</th>
+                <th>شماره کاربر</th>
+                <th>کامنت کاربر</th>
+                <th>تاریخ کامنت</th>
+            </tr>
+            <tr>
+                <th>@Model.Name</th>
+                <th>@Model.PhoneNumber</th>
+                <th>@Model.CommentText</th>
+                <th>@Model.CommentDate</th>
+            </tr>
+            }
+        </table>
+    </div>
+    @await Component.InvokeAsync("Replys",Model.Id)
+    @await Component.InvokeAsync("AddReplysForm",Model.Id)
+</article>

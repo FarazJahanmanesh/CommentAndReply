@@ -6,41 +6,27 @@
 @{
 }
 <head>
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
+    <link type="text" rel="stylesheet" href="~/css/Home/Components/Replys.css"/>
 </head>
-<div>
-    <table>
-        <tr>
-            <th>نام کاربر</th>
-            <th>شماره کاربر</th>
-            <th>کامنت کاربر</th>
-            <th>تاریخ کامنت</th>
-        </tr>
-        @foreach(var item in Model)
-        {
+<article>
+    <div>
+        <table>
             <tr>
-                <th>@item.Name</th>
-                <th>@item.PhoneNumber</th>
-                <th>@item.CommentText</th>
-                <th>@item.CommentDate</th>
+                <th>نام کاربر</th>
+                <th>شماره کاربر</th>
+                <th>کامنت کاربر</th>
+                <th>تاریخ کامنت</th>
             </tr>
-        }
-        }
-    </table>
-</div>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>@item.Name</th>
+                    <th>@item.PhoneNumber</th>
+                    <th>@item.CommentText</th>
+                    <th>@item.CommentDate</th>
+                </tr>
+            }
+            }
+        </table>
+    </div>
+</article>
