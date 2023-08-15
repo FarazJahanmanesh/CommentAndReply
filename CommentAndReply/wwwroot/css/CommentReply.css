@@ -1,0 +1,24 @@
+﻿.comment-table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse 1px;
+    width: 100%;
+}
+
+.header-table {
+    font-size: 30px;
+}
+
+.content-table th {
+    background-color: rgba(203, 203, 255, 0.753);
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+    .content-table th:hover {
+        box-shadow: 0px 1px 5px 0px;
+        background-color: rgba(218, 255, 203, 0.753);
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }

@@ -5,26 +5,25 @@
 @{
 }
 <head>
-    <link type="text" rel="stylesheet" href="~/css/Home/CommentReply.css"/>
+    <link type="text/css" rel="stylesheet" href="~/css/CommentReply.css"/>
 </head>
 <article>
     <div>
-        <table>
-            <tr>
+        <table class="comment-table">
+            <tr class="header-table">
                 <th>نام کاربر</th>
                 <th>شماره کاربر</th>
                 <th>کامنت کاربر</th>
                 <th>تاریخ کامنت</th>
             </tr>
-            <tr>
+            <tr class="content-table">
                 <th>@Model.Name</th>
                 <th>@Model.PhoneNumber</th>
                 <th>@Model.CommentText</th>
                 <th>@Model.CommentDate</th>
             </tr>
-            }
         </table>
-    </div>
+    </div
     @await Component.InvokeAsync("Replys",Model.Id)
     @await Component.InvokeAsync("AddReplysForm",Model.Id)
 </article>

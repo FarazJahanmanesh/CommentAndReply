@@ -1,2 +1,22 @@
-﻿body {
+﻿.Header {
+    text-align:center;
+    background-color: rgba(198, 211, 252, 0.603);
+    margin: auto;
+    height: 300px;
+}
+.Header h1{
+    letter-spacing: 8px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 80px;
+    padding: 80px;
+}
+.Footer {
+    text-align: center;
+    background-color: rgba(198, 211, 252, 0.603);
+    margin: auto;
+    height: 40px;
+}
+.Footer h6{
+    letter-spacing: 8px;
+    padding: 13px;
 }
