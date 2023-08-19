@@ -4,14 +4,14 @@
     ViewData["Title"] = "Comments Page";
 }
 <head>
-    <link rel="stylesheet" href="~/css/Home/Components/Comments.css"/>
+    <link rel="stylesheet"  href="~/css/Home/Comments.css"/>
 </head>
 
 <article>
     <form>
         <div>
-            <table>
-                <tr>
+            <table class="comment-table">
+                <tr class="header-table">
                     <th></th>
                     <th>نام کاربر</th>
                     <th>شماره کاربر</th>
@@ -21,7 +21,7 @@
                 </tr>
                 @foreach (var item in Model)
                 {
-                    <tr>
+                    <tr class="content-table">
                         <th><a asp-action="CommentReply" asp-route-Id="@item.Id" asp-controller="Home">.....</a></th>
                         <th>@item.Name</th>
                         <th>@item.PhoneNumber</th>
