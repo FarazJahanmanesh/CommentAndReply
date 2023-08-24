@@ -1,4 +1,5 @@
-﻿using CommentAndReply.Contracts;
+﻿using AutoMapper;
+using CommentAndReply.Contracts;
 using CommentAndReply.Dto;
 using CommentAndReply.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -10,8 +11,10 @@ namespace CommentAndReply.Repository
     public class CommentAndReplyRepository : ICommentAndReplyRepository
     {
         private readonly CommentAndReplyDbcontext _commentAndReplyDbcontext;
-        public CommentAndReplyRepository(CommentAndReplyDbcontext commentAndReplyDbcontext)
+        private readonly IMapper _mapper;
+        public CommentAndReplyRepository(CommentAndReplyDbcontext commentAndReplyDbcontext, IMapper mapper)
         {
+            _mapper=mapper;
             _commentAndReplyDbcontext = commentAndReplyDbcontext;
         }
         public void MakeComment(Comment comment)
@@ -56,6 +59,7 @@ namespace CommentAndReply.Repository
                     CountReply = CountReply(item.Id)
                 });
             }
+            var a = _mapper.Map<List<CommentDetailDto>>(comments);
             return Comments;
         }
         int CountReply(int id)

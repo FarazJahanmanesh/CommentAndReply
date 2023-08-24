@@ -1,5 +1,6 @@
 using CommentAndReply;
 using CommentAndReply.Contracts;
+using CommentAndReply.Helpers;
 using CommentAndReply.Repository;
 using CommentAndReply.Services;
 using CommentAndReply.ViewComponents;
@@ -11,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ICommentAndReplayServices,CommentAndReplayServices>();
 builder.Services.AddScoped<ICommentAndReplyRepository, CommentAndReplyRepository>();
+
+builder.Services.AddAutoMapper(typeof(CommentAndReplyMapperProfile).Assembly);
 
 var connectionString = builder.Configuration.GetConnectionString("CommentAndReply");
 builder.Services.AddDbContext<CommentAndReplyDbcontext>(
