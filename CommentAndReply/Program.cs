@@ -3,7 +3,6 @@ using CommentAndReply.Dbcontext;
 using CommentAndReply.Helpers;
 using CommentAndReply.Repository;
 using CommentAndReply.Services;
-using CommentAndReply.ViewComponents;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
