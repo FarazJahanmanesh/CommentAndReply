@@ -12,27 +12,27 @@ namespace CommentAndReply.Services
         {
             _commentAndReplyRepository = icommentAndReplyRepository;
         }
-        public void MakeComment(Comment comment)
+        public async Task MakeComment(Comment comment)
         {
-            _commentAndReplyRepository.MakeComment(comment);
+            await _commentAndReplyRepository.MakeComment(comment);
         }
 
-        public void MakeReplyComment(ReplyComment replyComment)
+        public async Task MakeReplyComment(ReplyComment replyComment)
         {
-            _commentAndReplyRepository.MakeReplyComment(replyComment);
+            await _commentAndReplyRepository.MakeReplyComment(replyComment);
         }
 
-        public List<CommentDetailDto> ShowAllComment()
+        public async Task<List<ShowAllCommentDetailDto>> ShowAllComment()
         {
-            return _commentAndReplyRepository.ShowAllComment();
+            return await _commentAndReplyRepository.ShowAllComment();
         }
-        public Comment ShowComment(int id)
+        public async  Task<Comment> ShowComment(int id)
         {
-            return _commentAndReplyRepository.ShowComment(id);
+            return await _commentAndReplyRepository.ShowComment(id);
         }
-        public List<ReplyComment> ShowAllReply(int id)
+        public async Task<List<ReplyComment>> ShowAllReply(int id)
         {
-            return _commentAndReplyRepository.ShowAllReply(id);
+            return await _commentAndReplyRepository.ShowAllReply(id);
         }
     }
 }

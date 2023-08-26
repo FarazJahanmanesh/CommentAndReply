@@ -12,9 +12,9 @@ namespace CommentAndReply.ViewComponents
         {
             _commentAndReplayServices=commentAndReplayServices;
         }
-        public  IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            var AllComment = _commentAndReplayServices.ShowAllComment();
+            var AllComment = await _commentAndReplayServices.ShowAllComment();
             return View("Comments", AllComment);
         }
     }

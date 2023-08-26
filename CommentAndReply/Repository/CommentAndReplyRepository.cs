@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using CommentAndReply.Contracts;
+using CommentAndReply.Dbcontext;
 using CommentAndReply.Dto;
 using CommentAndReply.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
@@ -17,9 +19,9 @@ namespace CommentAndReply.Repository
             _mapper=mapper;
             _commentAndReplyDbcontext = commentAndReplyDbcontext;
         }
-        public void MakeComment(Comment comment)
+        public async Task MakeComment(Comment comment)
         {
-            _commentAndReplyDbcontext.Add(new Comment
+            await _commentAndReplyDbcontext.AddAsync(new Comment
             {
                 Id = comment.Id,
                 CommentText = comment.CommentText,
@@ -28,11 +30,11 @@ namespace CommentAndReply.Repository
                 PhoneNumber = comment.PhoneNumber,
                 ReplyComments = comment.ReplyComments
             });
-            _commentAndReplyDbcontext.SaveChanges();
+            await _commentAndReplyDbcontext.SaveChangesAsync();
         }
-        public void MakeReplyComment(ReplyComment replyComment)
+        public async Task MakeReplyComment(ReplyComment replyComment)
         {
-            _commentAndReplyDbcontext.Add(new ReplyComment
+            await _commentAndReplyDbcontext.AddAsync(new ReplyComment
             {
                 Id = replyComment.Id,
                 CommentId = replyComment.CommentId,
@@ -41,40 +43,40 @@ namespace CommentAndReply.Repository
                 Name = replyComment.Name,
                 PhoneNumber = replyComment.PhoneNumber
             }); 
-            _commentAndReplyDbcontext.SaveChanges();
+            await _commentAndReplyDbcontext.SaveChangesAsync();
         }
-        public List<CommentDetailDto> ShowAllComment()
+        public async Task<List<ShowAllCommentDetailDto>> ShowAllComment()
         {
-            List<CommentDetailDto> Comments = new List<CommentDetailDto>();
-            List<Comment> comments = _commentAndReplyDbcontext.Comments.ToList();
+            List<ShowAllCommentDetailDto> Comments = new List<ShowAllCommentDetailDto>();
+            List<Comment> comments = await _commentAndReplyDbcontext.Comments.ToListAsync();
             foreach(var item in comments)
             {
-                Comments.Add(new CommentDetailDto
+                Comments.Add(new ShowAllCommentDetailDto
                 {
                     Id=item.Id,
                     CommentDate=item.CommentDate,
                     CommentText=item.CommentText,
                     Name = item.Name,
                     PhoneNumber=item.PhoneNumber,
-                    CountReply = CountReply(item.Id)
+                    CountReply = await CountReply(item.Id)
                 });
             }
-            var a = _mapper.Map<List<CommentDetailDto>>(comments);
+            var a = _mapper.Map<List<ShowAllCommentDetailDto>>(comments);
             return Comments;
         }
-        int CountReply(int id)
+        private async Task<int> CountReply(int id)
         {
-            var CountReply = _commentAndReplyDbcontext.ReplyComments.Count(c => c.CommentId == id);
+            var CountReply = await _commentAndReplyDbcontext.ReplyComments.CountAsync(c => c.CommentId == id);
             return CountReply;
         }
-        public Comment ShowComment(int id)
+        public async Task<Comment> ShowComment(int id)
         {
-            Comment comment = _commentAndReplyDbcontext.Comments.Where(c => c.Id == id).FirstOrDefault();
+            Comment comment = await _commentAndReplyDbcontext.Comments.Where(c => c.Id == id).SingleOrDefaultAsync();
             return comment;
         }
-        public List<ReplyComment> ShowAllReply(int id)
+        public async Task<List<ReplyComment>> ShowAllReply(int id)
         {
-            List<ReplyComment> Replys = _commentAndReplyDbcontext.ReplyComments.Where(c => c.CommentId == id).ToList();
+            List<ReplyComment> Replys = await _commentAndReplyDbcontext.ReplyComments.Where(c => c.CommentId == id).ToListAsync();
             return Replys;
         }
     }

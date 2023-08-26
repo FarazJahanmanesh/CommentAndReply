@@ -11,9 +11,9 @@ namespace CommentAndReply.ViewComponents
         {
             _commentAndReplayServices = commentAndReplayServices;
         }
-        public IViewComponentResult Invoke(int Id)
+        public async Task<IViewComponentResult> InvokeAsync(int Id)
         {
-            List<ReplyComment> ReplyComments = _commentAndReplayServices.ShowAllReply(Id);
+            List<ReplyComment> ReplyComments = await _commentAndReplayServices.ShowAllReply(Id);
             return View("Replys", ReplyComments);
         }
     }

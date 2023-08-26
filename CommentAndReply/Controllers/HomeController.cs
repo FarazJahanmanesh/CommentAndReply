@@ -19,11 +19,11 @@ namespace CommentAndReply.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Index(Comment comment)
+        public async Task<IActionResult> Index(Comment comment)
         {
             //if(ModelState.IsValid==false)
                 //return View(comment);
-            _commentAndReplayServices.MakeComment(new Comment 
+            await _commentAndReplayServices.MakeComment(new Comment 
             {
                 Name=comment.Name,
                 PhoneNumber=comment.PhoneNumber,
@@ -31,14 +31,14 @@ namespace CommentAndReply.Controllers
             });
             return View();
         }
-        public IActionResult CommentReply(int Id)
+        public async Task<IActionResult> CommentReply(int Id)
         {
-            var comment =_commentAndReplayServices.ShowComment(Id);
+            var comment =await _commentAndReplayServices.ShowComment(Id);
             return View(comment);
         }
-        public IActionResult AddReply(int CId, ReplyComment replyComment)
+        public async Task<IActionResult> AddReply(int CId, ReplyComment replyComment)
         {
-            _commentAndReplayServices.MakeReplyComment(new ReplyComment
+            await _commentAndReplayServices.MakeReplyComment(new ReplyComment
             {
                 CommentDate = replyComment.CommentDate,
                 CommentId = CId,

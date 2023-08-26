@@ -5,10 +5,10 @@ namespace CommentAndReply.Contracts
 {
     public interface ICommentAndReplyRepository
     {
-        public void MakeComment(Comment comment);
-        public List<CommentDetailDto> ShowAllComment();
-        public void MakeReplyComment(ReplyComment replyComment);
-        public Comment ShowComment(int id);
-        public List<ReplyComment> ShowAllReply(int id);
+        public Task MakeComment(Comment comment);
+        public Task MakeReplyComment(ReplyComment replyComment);
+        public Task<List<ShowAllCommentDetailDto>> ShowAllComment();
+        public Task<Comment> ShowComment(int id);
+        public Task<List<ReplyComment>> ShowAllReply(int id);
     }
 }

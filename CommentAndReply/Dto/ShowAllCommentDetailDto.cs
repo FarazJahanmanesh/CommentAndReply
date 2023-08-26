@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CommentAndReply.Dto
 {
-    public class CommentDetailDto
+    public class ShowAllCommentDetailDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

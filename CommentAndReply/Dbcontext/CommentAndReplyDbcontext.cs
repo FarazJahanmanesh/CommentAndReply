@@ -1,11 +1,11 @@
 ﻿using CommentAndReply.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CommentAndReply
+namespace CommentAndReply.Dbcontext
 {
-    public class CommentAndReplyDbcontext: DbContext
+    public class CommentAndReplyDbcontext : DbContext
     {
-        public CommentAndReplyDbcontext(DbContextOptions<CommentAndReplyDbcontext>options):base(options)
+        public CommentAndReplyDbcontext(DbContextOptions<CommentAndReplyDbcontext> options) : base(options)
         {
         }
         public DbSet<Comment> Comments { get; set; }
