@@ -1,4 +1,5 @@
-﻿using CommentAndReply.Contracts;
+﻿using CommentAndReply.Core.Domain.Contracts;
+using CommentAndReply.Core.Domain.Entities;
 using CommentAndReply.Models;
 using Microsoft.AspNetCore.Mvc;
 

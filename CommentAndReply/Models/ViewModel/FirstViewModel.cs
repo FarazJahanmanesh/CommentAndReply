@@ -1,4 +1,6 @@
-﻿namespace CommentAndReply.Models.ViewModel
+﻿using CommentAndReply.Core.Domain.Entities;
+
+namespace CommentAndReply.Models.ViewModel
 {
     public class FirstViewModel
     {

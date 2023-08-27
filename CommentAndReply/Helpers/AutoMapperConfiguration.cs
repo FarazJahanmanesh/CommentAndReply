@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using CommentAndReply.Dto;
-using CommentAndReply.Models;
+using CommentAndReply.Core.Domain.Dto;
+using CommentAndReply.Core.Domain.Entities;
 
 namespace CommentAndReply.Helpers
 {

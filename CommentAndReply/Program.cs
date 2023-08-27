@@ -1,14 +1,15 @@
-using CommentAndReply.Contracts;
-using CommentAndReply.Dbcontext;
+using CommentAndReply.Core.Application.Services;
+using CommentAndReply.Core.Domain.Contracts;
 using CommentAndReply.Helpers;
-using CommentAndReply.Repository;
-using CommentAndReply.Services;
+using CommentAndReply.Infra.Database;
+using CommentAndReply.Infra.Database.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddScoped<ICommentAndReplayServices,CommentAndReplayServices>();
 builder.Services.AddScoped<ICommentAndReplyRepository, CommentAndReplyRepository>();
 
@@ -18,7 +19,7 @@ var connectionString = builder.Configuration.GetConnectionString("CommentAndRepl
 builder.Services.AddDbContext<CommentAndReplyDbcontext>(
     options =>
     {
-        options.UseSqlServer("Server=.;Database=CommentAndReply;Trusted_Connection=True;TrustServerCertificate=True;");
+        options.UseSqlServer(connectionString);
     });
 
 var app = builder.Build();
