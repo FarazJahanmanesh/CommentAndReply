@@ -44,7 +44,7 @@ namespace CommentAndReply.Infra.Database.Repository
         public async Task<List<ShowAllCommentDetailDto>> ShowAllComment()
         {
             List<ShowAllCommentDetailDto> Comments = new List<ShowAllCommentDetailDto>();
-            List<Comment> comments = await _commentAndReplyDbcontext.Comments.ToListAsync();
+            List<Comment> comments = await _commentAndReplyDbcontext.Comments.Where(c=>c.IsDeleted== false).ToListAsync();
             foreach(var item in comments)
             {
                 Comments.Add(new ShowAllCommentDetailDto
@@ -67,12 +67,12 @@ namespace CommentAndReply.Infra.Database.Repository
         }
         public async Task<Comment> ShowComment(int id)
         {
-            Comment comment = await _commentAndReplyDbcontext.Comments.Where(c => c.Id == id).SingleOrDefaultAsync();
+            Comment comment = await _commentAndReplyDbcontext.Comments.Where(c => c.Id == id&&c.IsDeleted==false).SingleOrDefaultAsync();
             return comment;
         }
         public async Task<List<ReplyComment>> ShowAllReply(int id)
         {
-            List<ReplyComment> Replys = await _commentAndReplyDbcontext.ReplyComments.Where(c => c.CommentId == id).ToListAsync();
+            List<ReplyComment> Replys = await _commentAndReplyDbcontext.ReplyComments.Where(c => c.CommentId == id&&c.IsDeleted == false).ToListAsync();
             return Replys;
         }
     }
