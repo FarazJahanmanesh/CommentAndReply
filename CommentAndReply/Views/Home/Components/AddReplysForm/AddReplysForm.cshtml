@@ -6,25 +6,25 @@
 @{
 }
 <head>
-    <link rel="stylesheet" type="text" href="~/css/Home/Components/AddReplysForm.css"/>
+    <link rel="stylesheet" type="text" href="~/css/Home/CommentReply.css" />
 </head>
 
 <article>
     <div>
-        <form asp-action="AddReply" asp-controller="Home" asp-route-CId="@Model.CommentId">
+        <form asp-action="AddReply" asp-controller="Home" asp-route-CId="@Model.CommentId" class="Comment-form">
             <div>
-                <label asp-for="Name">نام خود را وارد کنید</label>
-                <input asp-for="Name" />
+                <label asp-for="Name" class="label-form">نام خود را وارد کنید</label>
+                <input asp-for="Name" type="text" class="input-form" placeholder="نام خود را وارد کنید" />
             </div>
             <div>
-                <label asp-for="PhoneNumber">شماره خود را وارد کنید</label>
-                <input asp-for="PhoneNumber" />
+                <label asp-for="PhoneNumber" class="label-form">شماره خود را وارد کنید</label>
+                <input asp-for="PhoneNumber" type="number" class="input-form" placeholder="شماره خود را وارد کنید" />
             </div>
             <div>
-                <label asp-for="CommentText">متن کامنت خود را وارد کنید</label>
-                <input asp-for="CommentText" />
+                <label asp-for="CommentText" class="label-form">متن کامنت خود را وارد کنید</label>
+                <textarea type="textarea" asp-for="CommentText" class="input-form" placeholder="متن کامنت خود را وارد کنید" />
             </div>
-            <button type="submit">ارسال کامنت</button>
+            <button type="submit" class="button-form">ارسال کامنت</button>
         </form>
     </div>
 </article>

@@ -1,5 +1,7 @@
 ﻿using CommentAndReply.Core.Domain.Contracts;
+using CommentAndReply.Core.Domain.Dto;
 using CommentAndReply.Core.Domain.Entities;
+using CommentAndReply.EndPoint.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CommentAndReply.Controllers
@@ -17,15 +19,15 @@ namespace CommentAndReply.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Index(Comment comment)
+        public async Task<IActionResult> Index(CreateCommentViewModel model)
         {
             //if(ModelState.IsValid==false)
                 //return View(comment);
-            await _commentAndReplayServices.MakeComment(new Core.Domain.Entities.Comment 
+            await _commentAndReplayServices.CreateComment(new CreateCommentDetailDto
             {
-                Name=comment.Name,
-                PhoneNumber=comment.PhoneNumber,
-                CommentText=comment.CommentText
+                Name= model.Name,
+                PhoneNumber= model.PhoneNumber,
+                CommentText= model.CommentText
             });
             return View();
         }
@@ -36,7 +38,7 @@ namespace CommentAndReply.Controllers
         }
         public async Task<IActionResult> AddReply(int CId, ReplyComment replyComment)
         {
-            await _commentAndReplayServices.MakeReplyComment(new Core.Domain.Entities.ReplyComment
+            await _commentAndReplayServices.CreateReplyComment(new Core.Domain.Entities.ReplyComment
             {
                 CommentDate = replyComment.CommentDate,
                 CommentId = CId,

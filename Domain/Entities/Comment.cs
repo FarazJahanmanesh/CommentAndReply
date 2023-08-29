@@ -2,9 +2,8 @@
 
 namespace CommentAndReply.Core.Domain.Entities
 {
-    public class Comment
+    public class Comment:BaseEntity
     {
-        public int Id { get; set; }
         [Required(ErrorMessage ="اسم نمی تواند خالی باشد")]
         public string Name { get; set; }
         [Required(ErrorMessage = "شماره تلفن نمی تواند خالی باشد")]

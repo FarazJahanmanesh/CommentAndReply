@@ -6,12 +6,12 @@
 @{
 }
 <head>
-    <link type="text/css" rel="stylesheet" href="~/css/Replys.css" />
+    <link rel="stylesheet" type="text" href="~/css/Home/Replys.css" />
 </head>
 <article>
     <div>
-        <table>
-            <tr>
+        <table class="comment-table">
+            <tr class="header-table">
                 <th>نام کاربر</th>
                 <th>شماره کاربر</th>
                 <th>کامنت کاربر</th>
@@ -19,13 +19,12 @@
             </tr>
             @foreach (var item in Model)
             {
-                <tr>
+                <tr class="content-table">
                     <th>@item.Name</th>
                     <th>@item.PhoneNumber</th>
                     <th>@item.CommentText</th>
                     <th>@item.CommentDate</th>
                 </tr>
-            }
             }
         </table>
     </div>

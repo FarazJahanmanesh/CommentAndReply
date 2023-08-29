@@ -15,20 +15,18 @@ namespace CommentAndReply.Infra.Database.Repository
             _mapper=mapper;
             _commentAndReplyDbcontext = commentAndReplyDbcontext;
         }
-        public async Task MakeComment(Comment comment)
+        public async Task CreateComment(CreateCommentDetailDto detailDto)
         {
             await _commentAndReplyDbcontext.AddAsync(new Comment
             {
-                Id = comment.Id,
-                CommentText = comment.CommentText,
-                CommentDate = comment.CommentDate,
-                Name = comment.Name,
-                PhoneNumber = comment.PhoneNumber,
-                ReplyComments = comment.ReplyComments
+                CommentText = detailDto.CommentText,
+                CommentDate = detailDto.CreatedDate,
+                Name = detailDto.Name,
+                PhoneNumber = detailDto.PhoneNumber
             });
             await _commentAndReplyDbcontext.SaveChangesAsync();
         }
-        public async Task MakeReplyComment(ReplyComment replyComment)
+        public async Task CreateReplyComment(ReplyComment replyComment)
         {
             await _commentAndReplyDbcontext.AddAsync(new ReplyComment
             {

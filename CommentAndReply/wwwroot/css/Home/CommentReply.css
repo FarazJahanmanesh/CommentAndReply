@@ -1,0 +1,43 @@
+﻿.Comment-form {
+    height: 40%;
+    background: #5364ff6e;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 60%;
+    border: solid black 2px;
+}
+
+    .Comment-form .label-form {
+        display: block;
+        padding: 10px;
+    }
+
+    .Comment-form .input-form {
+        text-align: right;
+        width: 90%;
+    }
+
+        .Comment-form .input-form[type='textarea'] {
+            text-align: right;
+            height: 40%;
+        }
+
+    .Comment-form .button-form {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        height: 10%;
+        width: 15%;
+        border: none;
+        background: rgba(84, 255, 255, 0.541);
+    }
+
+    .Comment-form .button-form {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        height: 10%;
+        width: 15%;
+        border: none;
+        background: rgba(84, 255, 255, 0.541);
+    }

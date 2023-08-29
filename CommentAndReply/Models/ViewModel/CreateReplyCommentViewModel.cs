@@ -1,10 +1,9 @@
-﻿namespace CommentAndReply.Core.Domain.Dto
+﻿namespace CommentAndReply.EndPoint.Models.ViewModel
 {
-    public class CreateCommentDetailDto
+    public class CreateReplyCommentViewModel
     {
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
         public string CommentText { get; set; }
-        public DateTime CreatedDate { get; set; }=DateTime.Now;
     }
 }

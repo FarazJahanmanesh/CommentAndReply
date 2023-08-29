@@ -11,14 +11,14 @@ namespace CommentAndReply.Core.Application.Services
         {
             _commentAndReplyRepository = icommentAndReplyRepository;
         }
-        public async Task MakeComment(Comment comment)
+        public async Task CreateComment(CreateCommentDetailDto detailDto)
         {
-            await _commentAndReplyRepository.MakeComment(comment);
+            await _commentAndReplyRepository.CreateComment(detailDto);
         }
 
-        public async Task MakeReplyComment(ReplyComment replyComment)
+        public async Task CreateReplyComment(ReplyComment replyComment)
         {
-            await _commentAndReplyRepository.MakeReplyComment(replyComment);
+            await _commentAndReplyRepository.CreateReplyComment(replyComment);
         }
 
         public async Task<List<ShowAllCommentDetailDto>> ShowAllComment()
