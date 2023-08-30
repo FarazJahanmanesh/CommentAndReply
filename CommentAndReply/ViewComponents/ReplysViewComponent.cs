@@ -1,4 +1,5 @@
 ﻿using CommentAndReply.Core.Domain.Contracts;
+using CommentAndReply.Core.Domain.Dto;
 using CommentAndReply.Core.Domain.Entities;
 using CommentAndReply.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +15,7 @@ namespace CommentAndReply.ViewComponents
         }
         public async Task<IViewComponentResult> InvokeAsync(int Id)
         {
-            List<ReplyComment> ReplyComments = await _commentAndReplayServices.ShowAllReply(Id);
+            List<ShowAllCommentReplyDetailDto> ReplyComments = await _commentAndReplayServices.ShowAllReply(Id);
             return View("Replys", ReplyComments);
         }
     }

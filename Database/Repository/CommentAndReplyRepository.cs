@@ -3,6 +3,7 @@ using CommentAndReply.Core.Domain.Entities;
 using CommentAndReply.Core.Domain.Dto;
 using CommentAndReply.Core.Domain.Contracts;
 using Microsoft.EntityFrameworkCore;
+using System.Xml.Linq;
 
 namespace CommentAndReply.Infra.Database.Repository
 {
@@ -17,6 +18,7 @@ namespace CommentAndReply.Infra.Database.Repository
         }
         public async Task CreateComment(CreateCommentDetailDto detailDto)
         {
+            var a = _mapper.Map<List<Comment>>(detailDto);
             await _commentAndReplyDbcontext.AddAsync(new Comment
             {
                 CommentText = detailDto.CommentText,
@@ -24,18 +26,17 @@ namespace CommentAndReply.Infra.Database.Repository
                 Name = detailDto.Name,
                 PhoneNumber = detailDto.PhoneNumber
             });
+
             await _commentAndReplyDbcontext.SaveChangesAsync();
         }
-        public async Task CreateReplyComment(ReplyComment replyComment)
+        public async Task CreateReplyComment(CreateCommentReplyDetailDto detailDto)
         {
             await _commentAndReplyDbcontext.AddAsync(new ReplyComment
             {
-                Id = replyComment.Id,
-                CommentId = replyComment.CommentId,
-                CommentText = replyComment.CommentText,
-                CommentDate = replyComment.CommentDate,
-                Name = replyComment.Name,
-                PhoneNumber = replyComment.PhoneNumber
+                CommentText = detailDto.CommentText,
+                CommentDate = detailDto.CreatedDate,
+                Name = detailDto.Name,
+                PhoneNumber = detailDto.PhoneNumber
             }); 
             await _commentAndReplyDbcontext.SaveChangesAsync();
         }
@@ -63,15 +64,31 @@ namespace CommentAndReply.Infra.Database.Repository
             var CountReply = await _commentAndReplyDbcontext.ReplyComments.CountAsync(c => c.CommentId == id);
             return CountReply;
         }
-        public async Task<Comment> ShowComment(int id)
+        public async Task<ShowCommentDetailDto> ShowComment(int id)
         {
-            Comment comment = await _commentAndReplyDbcontext.Comments.Where(c => c.Id == id&&c.IsDeleted==false).SingleOrDefaultAsync();
-            return comment;
+            var comment = await _commentAndReplyDbcontext.Comments.Where(c => c.Id == id&&c.IsDeleted==false).SingleOrDefaultAsync();
+
+            return new ShowCommentDetailDto 
+            { 
+                Name=comment.Name,
+                CommentText=comment.CommentText,
+                PhoneNumber=comment.PhoneNumber
+            };
         }
-        public async Task<List<ReplyComment>> ShowAllReply(int id)
+        public async Task<List<ShowAllCommentReplyDetailDto>> ShowAllReply(int id)
         {
-            List<ReplyComment> Replys = await _commentAndReplyDbcontext.ReplyComments.Where(c => c.CommentId == id&&c.IsDeleted == false).ToListAsync();
-            return Replys;
+            List<ShowAllCommentReplyDetailDto> AllReply = new();
+            var replys = await _commentAndReplyDbcontext.ReplyComments.Where(c => c.CommentId == id&&c.IsDeleted == false).ToListAsync();
+            foreach(var item  in replys)
+            {
+                AllReply.Add(new ShowAllCommentReplyDetailDto
+                {
+                    CommentText=item.CommentText,
+                    Name=item.Name,
+                    PhoneNumber=item.PhoneNumber
+                });
+            }
+            return AllReply;
         }
     }
 }

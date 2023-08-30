@@ -6,9 +6,9 @@ namespace CommentAndReply.Core.Domain.Contracts
     public interface ICommentAndReplyRepository
     {
         public Task CreateComment(CreateCommentDetailDto detailDto);
-        public Task CreateReplyComment(ReplyComment replyComment);
+        public Task CreateReplyComment(CreateCommentReplyDetailDto detailDto);
         public Task<List<ShowAllCommentDetailDto>> ShowAllComment();
-        public Task<Comment> ShowComment(int id);
-        public Task<List<ReplyComment>> ShowAllReply(int id);
+        public Task<ShowCommentDetailDto> ShowComment(int id);
+        public Task<List<ShowAllCommentReplyDetailDto>> ShowAllReply(int id);
     }
 }

@@ -9,6 +9,10 @@ namespace CommentAndReply.Helpers
         public AutoMapperConfiguration()
         {
             CreateMap<Comment, ShowAllCommentDetailDto>().ReverseMap();
+            CreateMap<Comment, CreateCommentDetailDto>().ReverseMap();
+            CreateMap<Comment, ShowCommentDetailDto>().ReverseMap();
+            CreateMap<ReplyComment, CreateCommentReplyDetailDto>().ReverseMap();
+            CreateMap<ReplyComment, ShowAllCommentReplyDetailDto >().ReverseMap();
         }
     }
 }

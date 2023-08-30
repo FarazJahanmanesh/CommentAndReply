@@ -34,17 +34,21 @@ namespace CommentAndReply.Controllers
         public async Task<IActionResult> CommentReply(int Id)
         {
             var comment =await _commentAndReplayServices.ShowComment(Id);
-            return View(comment);
-        }
-        public async Task<IActionResult> AddReply(int CId, ReplyComment replyComment)
-        {
-            await _commentAndReplayServices.CreateReplyComment(new Core.Domain.Entities.ReplyComment
+            return View(new ShowCommentViewModel
             {
-                CommentDate = replyComment.CommentDate,
-                CommentId = CId,
-                CommentText = replyComment.CommentText,
-                Name = replyComment.Name,
-                PhoneNumber = replyComment.PhoneNumber
+                PhoneNumber=comment.PhoneNumber,
+                Name=comment.Name,
+                CommentText=comment.CommentText
+            });
+        }
+        public async Task<IActionResult> AddReply(int CId, CreateReplyCommentViewModel model)
+        {
+            await _commentAndReplayServices.CreateReplyComment(new CreateCommentReplyDetailDto
+            {
+                //CommentId = CId,
+                CommentText = model.CommentText,
+                Name = model.Name,
+                PhoneNumber = model.PhoneNumber
             });
             return RedirectToAction("Index");
         }

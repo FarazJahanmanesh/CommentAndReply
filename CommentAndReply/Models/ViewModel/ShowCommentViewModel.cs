@@ -1,6 +1,6 @@
-﻿namespace CommentAndReply.Core.Domain.Dto
+﻿namespace CommentAndReply.EndPoint.Models.ViewModel
 {
-    public class ShowCommentDetailDto
+    public class ShowCommentViewModel
     {
         public string Name { get; set; }
         public string PhoneNumber { get; set; }

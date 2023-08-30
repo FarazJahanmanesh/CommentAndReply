@@ -16,20 +16,20 @@ namespace CommentAndReply.Core.Application.Services
             await _commentAndReplyRepository.CreateComment(detailDto);
         }
 
-        public async Task CreateReplyComment(ReplyComment replyComment)
+        public async Task CreateReplyComment(CreateCommentReplyDetailDto detailDto)
         {
-            await _commentAndReplyRepository.CreateReplyComment(replyComment);
+            await _commentAndReplyRepository.CreateReplyComment(detailDto);
         }
 
         public async Task<List<ShowAllCommentDetailDto>> ShowAllComment()
         {
             return await _commentAndReplyRepository.ShowAllComment();
         }
-        public async  Task<Comment> ShowComment(int id)
+        public async  Task<ShowCommentDetailDto> ShowComment(int id)
         {
             return await _commentAndReplyRepository.ShowComment(id);
         }
-        public async Task<List<ReplyComment>> ShowAllReply(int id)
+        public async Task<List<ShowAllCommentReplyDetailDto>> ShowAllReply(int id)
         {
             return await _commentAndReplyRepository.ShowAllReply(id);
         }

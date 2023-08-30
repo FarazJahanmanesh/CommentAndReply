@@ -7,8 +7,8 @@ namespace CommentAndReply.Core.Domain.Contracts
     {
         public Task CreateComment(CreateCommentDetailDto detailDto); 
         public Task<List<ShowAllCommentDetailDto>> ShowAllComment();
-        public Task CreateReplyComment(ReplyComment replyComment);
-        public Task<Comment> ShowComment(int id);
-        public Task<List<ReplyComment>> ShowAllReply(int id);
+        public Task CreateReplyComment(CreateCommentReplyDetailDto detailDto);
+        public Task<ShowCommentDetailDto> ShowComment(int id);
+        public Task<List<ShowAllCommentReplyDetailDto>> ShowAllReply(int id);
     }
 }
