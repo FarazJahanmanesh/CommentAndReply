@@ -31,13 +31,14 @@ namespace CommentAndReply.Infra.Database.Repository
         }
         public async Task CreateReplyComment(CreateCommentReplyDetailDto detailDto)
         {
-            await _commentAndReplyDbcontext.AddAsync(new ReplyComment
-            {
-                CommentText = detailDto.CommentText,
-                CommentDate = detailDto.CreatedDate,
-                Name = detailDto.Name,
-                PhoneNumber = detailDto.PhoneNumber
-            }); 
+            await _commentAndReplyDbcontext.AddAsync(_mapper.Map<ReplyComment>(detailDto));
+            //await _commentAndReplyDbcontext.AddAsync(new ReplyComment
+            //{
+            //    CommentText = detailDto.CommentText,
+            //    CommentDate = detailDto.CreatedDate,
+            //    Name = detailDto.Name,
+            //    PhoneNumber = detailDto.PhoneNumber
+            //}); 
             await _commentAndReplyDbcontext.SaveChangesAsync();
         }
         public async Task<List<ShowAllCommentDetailDto>> ShowAllComment()
@@ -67,13 +68,14 @@ namespace CommentAndReply.Infra.Database.Repository
         public async Task<ShowCommentDetailDto> ShowComment(int id)
         {
             var comment = await _commentAndReplyDbcontext.Comments.Where(c => c.Id == id&&c.IsDeleted==false).SingleOrDefaultAsync();
+            return _mapper.Map<ShowCommentDetailDto>(comment);
 
-            return new ShowCommentDetailDto 
-            { 
-                Name=comment.Name,
-                CommentText=comment.CommentText,
-                PhoneNumber=comment.PhoneNumber
-            };
+            //return new ShowCommentDetailDto 
+            //{ 
+            //    Name=comment.Name,
+            //    CommentText=comment.CommentText,
+            //    PhoneNumber=comment.PhoneNumber
+            //};
         }
         public async Task<List<ShowAllCommentReplyDetailDto>> ShowAllReply(int id)
         {
