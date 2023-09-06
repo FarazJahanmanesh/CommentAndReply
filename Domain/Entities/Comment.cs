@@ -13,5 +13,6 @@ namespace CommentAndReply.Core.Domain.Entities
         public DateTime CommentDate { get; set; }= DateTime.Now;
         public bool IsDeleted { get; set; }
         public List<ReplyComment> ReplyComments { get; set; }
+        public int CountReply { get; set; } = 0;
     }
 }
